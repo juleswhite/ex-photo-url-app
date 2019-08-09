@@ -1,21 +1,32 @@
 package edu.vanderbilt.finsta;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
+@Entity
 public class PhotoUrl {
 
-	private String id = UUID.randomUUID().toString();
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+	@SequenceGenerator(name = "sequenceGenerator")
+	private Long id;
 
 	private long time;
 
 	private String url;
 
-	public String getId() {
+	private String user;
+
+	private String tag;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -33,6 +44,22 @@ public class PhotoUrl {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 }
