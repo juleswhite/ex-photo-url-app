@@ -33,11 +33,18 @@ public class PhotoController {
         the PhotoUrl to a list photos associated with the specified
         tag. Finally, the method should return true if the operation
         was successful.
+        
+        Run the application by right-clicking on the PhotoApplication and
+        selecting Run Ass->Java Application. The logs for the application
+        should be printed to the Console in Eclipse. If you do not see the
+        Console, open it by going to the Window menu and selecting 
+        Show View->Console. 
 
         When you are done, you should be able to open the link below
         in your browser and see "true" printed:
 
         http://localhost:8080/photo?url=http://www.magnum.io/img/magnum.png&tag=vandy
+      
 
         **/
 
@@ -45,6 +52,13 @@ public class PhotoController {
 	/**
         
         Step 2. 
+        
+        Make sure that you stop the application by pressing the red stop
+        sign in the Console. After you make the changes for each subsequent
+        step, run the app and then stop it before the next step. 
+        
+        If you see an error about Tomcat or ports, it is because you failed
+        to stop the application before trying to rerun it.
 
         Create a method called getPhotosByTag that receives requests to
         /photo/{tag}, where {tag} is replaced by an arbitrary string.
@@ -97,6 +111,8 @@ public class PhotoController {
         /**
     
         Step 6. 
+        
+        Uncomment the code in the method below.
 
         This example uses a Thymeleaf template to render an HTML response.
 
@@ -114,17 +130,19 @@ public class PhotoController {
         This code is highly insecure.
 
         **/
-	@RequestMapping("/photo/{tag}/stream")
-	public ModelAndView photoStream(@PathVariable String tag) {
-		ModelAndView mv = new ModelAndView("stream");
-		mv.addObject("photos", getPhotosByTag(tag));
-		mv.addObject("tag", tag);
-		return mv;
-	}
+//	@RequestMapping("/photo/{tag}/stream")
+//	public ModelAndView photoStream(@PathVariable String tag) {
+//		ModelAndView mv = new ModelAndView("stream");
+//		mv.addObject("photos", getPhotosByTag(tag));
+//		mv.addObject("tag", tag);
+//		return mv;
+//	}
 	
         /**
     
         Step 7. 
+        
+        Uncomment the code in the method below.
 
         This example uses raw string manipulation to render an HTML response.
         
@@ -133,20 +151,20 @@ public class PhotoController {
         
         This code is highly insecure.
         **/
-	@RequestMapping(value="/photo/search/stream", produces=MediaType.TEXT_HTML_VALUE)
-        public String boom(String tagPrefix) throws URISyntaxException {     
-		 List<PhotoUrl> photos = searchPhotosByTagPrefix(tagPrefix);
-         
-		 String result = "<html><body>";
-		 
-		 for(PhotoUrl p : photos) {
-			 result += "<img src='" + p.getUrl() + "'></img><br/>";
-		 }
-		 
-		 result += "</body></html>";
-		 
-		 return result;
-        }
+//	@RequestMapping(value="/photo/search/stream", produces=MediaType.TEXT_HTML_VALUE)
+//        public String boom(String tagPrefix) throws URISyntaxException {     
+//		 List<PhotoUrl> photos = searchPhotosByTagPrefix(tagPrefix);
+//         
+//		 String result = "<html><body>";
+//		 
+//		 for(PhotoUrl p : photos) {
+//			 result += "<img src='" + p.getUrl() + "'></img><br/>";
+//		 }
+//		 
+//		 result += "</body></html>";
+//		 
+//		 return result;
+//        }
 	 
         /**
     
