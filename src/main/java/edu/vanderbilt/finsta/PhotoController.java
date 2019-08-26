@@ -98,7 +98,7 @@ public class PhotoController {
 
 	/**
         
-        Step 5. 
+        Step 4. 
 
         Create a method called searchPhotosByTagPrefix that receives
         requests to /photo/search and takes a tagPrefix argument. The
@@ -106,9 +106,37 @@ public class PhotoController {
         the photo starts with the provided prefix. 
 
         **/
-
-
+	
         /**
+    
+        Step 5. 
+        
+        Uncomment the code in the method below.
+
+        This example uses raw string manipulation to render an HTML response.
+        
+        Modify the code to wrap each image in a "<div></div>" element and also
+        include the time that the photo was taken inside the div.
+        
+        This code is highly insecure.
+        **/
+//	@RequestMapping(value="/photo/search/stream", produces=MediaType.TEXT_HTML_VALUE)
+//        public String boom(String tagPrefix) throws URISyntaxException {     
+//		 List<PhotoUrl> photos = searchPhotosByTagPrefix(tagPrefix);
+//         
+//		 String result = "<html><body>";
+//		 
+//		 for(PhotoUrl p : photos) {
+//			 result += "<img src='" + p.getUrl() + "'></img><br/>";
+//		 }
+//		 
+//		 result += "</body></html>";
+//		 
+//		 return result;
+//        }
+	
+	
+	/**
     
         Step 6. 
         
@@ -138,37 +166,11 @@ public class PhotoController {
 //		return mv;
 //	}
 	
+	
         /**
+	
     
         Step 7. 
-        
-        Uncomment the code in the method below.
-
-        This example uses raw string manipulation to render an HTML response.
-        
-        Modify the code to wrap each image in a "<div></div>" element and also
-        include the time that the photo was taken inside the div.
-        
-        This code is highly insecure.
-        **/
-//	@RequestMapping(value="/photo/search/stream", produces=MediaType.TEXT_HTML_VALUE)
-//        public String boom(String tagPrefix) throws URISyntaxException {     
-//		 List<PhotoUrl> photos = searchPhotosByTagPrefix(tagPrefix);
-//         
-//		 String result = "<html><body>";
-//		 
-//		 for(PhotoUrl p : photos) {
-//			 result += "<img src='" + p.getUrl() + "'></img><br/>";
-//		 }
-//		 
-//		 result += "</body></html>";
-//		 
-//		 return result;
-//        }
-	 
-        /**
-    
-        Step 8. 
 
         This example shows how to read a binary file and return it to a client.
 
